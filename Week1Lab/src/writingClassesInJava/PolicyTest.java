@@ -2,88 +2,68 @@ package writingClassesInJava;
 
 public class PolicyTest {
 
-	 
+	public static void main(String[] args)
 
-    public static void main(String[] args)
+	{
 
-    {
+		// Create and set an Auto policy object setting data using constructor
 
-          // Create and set an Auto policy object setting data using constructor
+		Auto a = new Auto("Jerry", "Seinfed", "Chevy", "Malibu", 10000.0, 50000.0);
 
-          Auto a = new Auto("Jerry", "Seinfed", "Chevy", "Malibu", 10000.0, 50000.0);
+		// Compute commission
 
-         
+		a.computeCommission();
 
-          // Compute commission
+		// Print auto policy
 
-          a.computeCommission();
+		System.out.println(a);
 
-         
+		// Create and set a Home policy object setting data using setters
 
-          // Print auto policy
+		Home h = new Home();
 
-          System.out.println(a);
+		h.setFirstName("Elaine");
 
-         
+		h.setLastName("Benes");
 
-          // Create and set a Home policy object setting data using setters
+		h.setContents(5000);
 
-          Home h = new Home();
+		h.setDwelling(32000);
 
-          h.setFirstName("Elaine");
+		h.setFootage(4000);
 
-          h.setLastName("Benes");
+		h.setLiability(10000);
 
-          h.setContents(5000);
+		// Compute commission
 
-          h.setDwelling(32000);
+		h.computeCommission();
 
-          h.setFootage(4000);
+		// Print home policy
 
-          h.setLiability(10000);
+		System.out.println(h);
 
-         
+		// Create and set an Life policy object setting data using constructor
 
-          // Compute commission
+		Life l = new Life("Cosmo", "Kramer", 35, 50000);
 
-          h.computeCommission();
+		// Compute commission
 
+		l.computeCommission();
 
+		// Print life policy
 
-          // Print home policy
+		System.out.println(l);
 
-          System.out.println(h);
+		// Test getters
 
-         
+		System.out.println("Get life firstName: " + l.getFirstName());
 
-          // Create and set an Life policy object setting data using constructor
+		System.out.println("Get life lastName: " + l.getLastName());
 
-          Life l = new Life("Cosmo", "Kramer", 35, 50000);
+		System.out.println("Get life age: " + l.getAge());
 
-         
+		System.out.println("Get life term: " + l.getTerm());
 
-          // Compute commission
-
-          l.computeCommission();
-
-         
-
-          // Print life policy
-
-          System.out.println(l);
-
-         
-
-          // Test getters
-
-          System.out.println("Get life firstName: " + l.getFirstName());
-
-          System.out.println("Get life lastName: " + l.getLastName());
-
-          System.out.println("Get life age: " + l.getAge());
-
-          System.out.println("Get life term: " + l.getTerm());
-
-    }
+	}
 
 }
