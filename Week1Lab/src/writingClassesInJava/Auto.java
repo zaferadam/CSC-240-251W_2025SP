@@ -37,6 +37,11 @@ public class Auto {
 		this.collision = collision;
 	}
 	
+	// constructor with no input uses default values in class definition until client sets them otherwise
+	public Auto() {
+		
+	}
+	
 	//****************************************************************
 	//	Class Operators
 	//****************************************************************
@@ -59,7 +64,6 @@ public class Auto {
 		DecimalFormat df = new DecimalFormat("$###,###,###.00");
 		return "Auto Policy\n----------\nName: " + lastName + ", " + firstName + "\nMake - Model: " + make + " - " + model + "\nLiability Coverage: " + df.format(liability) + "\nCollision Coverage: " + df.format(collision) + "\nAgent Commision: " + df.format(computeCommission()) + "\n\n";
 	}
-
 	
 	//****************************************************************
 	//	Define setters and getters for class variables
@@ -122,7 +126,7 @@ public class Auto {
 
 	// Collision Coverage
 	//***********
-	public void setModel(double collision) {
+	public void setCollision(double collision) {
 		this.collision = collision;
 		return;
 	}
