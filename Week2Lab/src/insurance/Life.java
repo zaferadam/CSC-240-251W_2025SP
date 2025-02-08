@@ -55,23 +55,6 @@ public class Life {
 	// ****************************************************************
 	// Getters and setters
 	// ****************************************************************
-	
-	// Set the whole class state in a continuous user input stream;
-	public void setAll() {
-		Scanner scan = new Scanner(System.in);
-
-		System.out.println("Enter first name of insured: ");
-		fName = scan.nextLine();
-		System.out.println("Enter last name of insured: ");
-		lName = scan.nextLine();
-		System.out.println("Enter age of insured: ");
-		age = scan.nextInt();
-		System.out.println("Enter amount of term: $");
-		term = scan.nextDouble();
-
-		scan.close();
-		return;
-	}
 
 	// first name
 	public void setFirstName(String fName) {

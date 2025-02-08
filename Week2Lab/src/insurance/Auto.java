@@ -73,27 +73,6 @@ public class Auto {
 	// Define setters and getters for class variables
 	// ****************************************************************
 
-	// Set the whole class state in a continuous user input stream;
-	public void setAll() {
-		Scanner scan = new Scanner(System.in);
-
-		System.out.println("Enter first name of insured: ");
-		fName = scan.nextLine();
-		System.out.println("Enter last name of insured: ");
-		lName = scan.nextLine();
-		System.out.println("Enter make of vehicle: ");
-		make = scan.nextLine();
-		System.out.println("Enter model of vehicle: ");
-		model = scan.nextLine();
-		System.out.println("Enter amount of liability: $");
-		liability = scan.nextDouble();
-		System.out.println("Enter amount of collision: $");
-		collision = scan.nextDouble();
-
-		scan.close();
-		return;
-	}
-
 	// First Name
 	// ***********
 	public void setFirstName(String name) {

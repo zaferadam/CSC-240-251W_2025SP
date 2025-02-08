@@ -68,27 +68,6 @@ public class Home {
 	// Getters and setters
 	// ****************************************************************
 	
-	// Set the whole class state in a continuous user input stream;
-	public void setAll() {
-		Scanner scan = new Scanner(System.in);
-
-		System.out.println("Enter first name of insured: ");
-		fName = scan.nextLine();
-		System.out.println("Enter last name of insured: ");
-		lName = scan.nextLine();
-		System.out.println("Enter house square footage:");
-		footage = scan.nextDouble();
-		System.out.println("Enter amount of dwelling: $");
-		dwelling = scan.nextDouble();
-		System.out.println("Enter amount of contents: $");
-		contents = scan.nextDouble();
-		System.out.println("Enter amount of liability: $");
-		liability = scan.nextDouble();
-
-		scan.close();
-		return;
-	}
-
 	// first name
 	public void setFirstName(String fName) {
 		this.fName = fName;

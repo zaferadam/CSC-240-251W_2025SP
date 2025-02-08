@@ -22,7 +22,7 @@ public class CommissionCalculator {
 	private Home home;
 	private Life life;
 	private int selection = 0;
-	private Boolean running = true;
+	private boolean running = true;
 	private static int count = 0;
 
 	/************************
@@ -37,7 +37,7 @@ public class CommissionCalculator {
 	public void Run() {
 		
 		Scanner scan = new Scanner(System.in);
-		do {
+		while (running){
 			System.out.println("-----------------------------");
 			System.out.println("Welcome to Parkland Insurance");
 			System.out.println("-----------------------------");
@@ -51,14 +51,46 @@ public class CommissionCalculator {
 			System.out.println("     7) Quit");
 
 			selection = scan.nextInt();
+			scan.nextLine();
 			
 			switch (selection) {
 			case 1:
-				auto.setAll();
+				System.out.print("Enter first name of insured: ");
+				auto.setFirstName(scan.nextLine());
+				System.out.print("Enter last name of insured: ");
+				auto.setLastName(scan.nextLine());
+				System.out.print("Enter make of vehicle: ");
+				auto.setMake(scan.nextLine());
+				System.out.print("Enter model of vehicle: ");
+				auto.setModel(scan.nextLine());
+				System.out.print("Enter amount of liability: $");
+				auto.setLiability(scan.nextDouble());
+				System.out.print("Enter amount of collision: $");
+				auto.setCollision(scan.nextDouble());
 				break;
 			case 2:
+				System.out.print("Enter first name of insured: ");
+				home.setFirstName(scan.nextLine());
+				System.out.print("Enter last name of insured: ");
+				home.setLastName(scan.nextLine());
+				System.out.print("Enter house square footage:");
+				home.setFootage(scan.nextDouble());
+				System.out.print("Enter amount of dwelling: $");
+				home.setDwelling(scan.nextDouble());
+				System.out.print("Enter amount of contents: $");
+				home.setContents(scan.nextDouble());
+				System.out.print("Enter amount of liability: $");
+				home.setLiability(scan.nextDouble());
 				break;
 			case 3:
+				System.out.print("Enter first name of insured: ");
+				life.setFirstName(scan.nextLine());
+				System.out.print("Enter last name of insured: ");
+				life.setLastName(scan.nextLine());
+				System.out.print("Enter age of insured: ");
+				life.setAge(scan.nextInt());
+				System.out.print("Enter amount of term: $");
+				life.setTerm(scan.nextDouble());
 				break;
 			case 4:
 				auto.computeCommission();
@@ -80,8 +112,8 @@ public class CommissionCalculator {
 				break;
 			}
 			count++;
+			selection = 0;
 		} 
-		while (running);
 		scan.close();
 		System.out.println("Thank you for using the Parkland Insurance tool " + count + " times!");
 	}
