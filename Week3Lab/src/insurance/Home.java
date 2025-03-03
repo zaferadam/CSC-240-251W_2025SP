@@ -6,20 +6,18 @@ import java.text.DecimalFormat;
 /**
  * Home insurance policy
  * 
- * Policy informatino includes: - name of insured - house square footage -
+ * Policy information includes: - name of insured - house square footage -
  * amount of dwelling coverage in dollars - amount of contents coverage in
  * dollars - amount of liability coverage in dollars Sales commision is based on
  * the formula: comission = (liability * 30%) + ((dwelling + contents) * 20%)
  */
-public class Home {
+public class Home extends Policy{
 
-	private String fName = "";
-	private String lName = "";
+
 	private double footage = 0;
 	private double dwelling = 0;
 	private double contents = 0;
 	private double liability = 0;
-	private double commission = 0;
 
 	// ****************************************************************
 	// Constructor
@@ -27,8 +25,7 @@ public class Home {
 
 	// constructor with all variables for instanced state
 	public Home(String fName, String lName, double footage, double dwelling, double contents, double liability) {
-		this.fName = fName;
-		this.lName = lName;
+		super(fName, lName);
 		this.footage = footage;
 		this.dwelling = dwelling;
 		this.contents = contents;
@@ -38,6 +35,7 @@ public class Home {
 	// constructor with no input uses user input values in class definition until
 	// client sets them otherwise
 	public Home() {
+		super();
 	}
 
 	// ****************************************************************
@@ -67,26 +65,6 @@ public class Home {
 	// ****************************************************************
 	// Getters and setters
 	// ****************************************************************
-	
-	// first name
-	public void setFirstName(String fName) {
-		this.fName = fName;
-		return;
-	}
-
-	public String getFirstName() {
-		return fName;
-	}
-
-	// last name
-	public void setLastName(String lName) {
-		this.lName = lName;
-		return;
-	}
-
-	public String getLastName() {
-		return lName;
-	}
 
 	// square footage
 	public void setFootage(double footage) {

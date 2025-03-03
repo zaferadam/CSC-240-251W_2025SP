@@ -10,26 +10,22 @@ import java.text.DecimalFormat;
  * dollars Sales commission is based on the formula: commission = (liability +
  * collision) * 30%
  */
-public class Auto {
+public class Auto extends Policy{
 
 	/**
 	 * instanced variables
 	 */
-	private String fName = "";
-	private String lName = "";
 	private String make = "";
 	private String model = "";
 	private double liability = 0;
 	private double collision = 0;
-	private double commission = 0;
 
 	// ****************************************************************
 	// Class Constructor
 	// ****************************************************************
 
 	public Auto(String fName, String lName, String make, String model, double liability, double collision) {
-		this.fName = fName;
-		this.lName = lName;
+		super(fName, lName);
 		this.make = make;
 		this.model = model;
 		this.liability = liability;
@@ -39,6 +35,7 @@ public class Auto {
 	// constructor with no input uses user input values in class definition until
 	// client sets them otherwise
 	public Auto() {
+		super();
 	}
 
 	// ****************************************************************
@@ -71,28 +68,6 @@ public class Auto {
 	// ****************************************************************
 	// Define setters and getters for class variables
 	// ****************************************************************
-
-	// First Name
-	// ***********
-	public void setFirstName(String name) {
-		fName = name;
-		return;
-	}
-
-	public String getFirstName() {
-		return fName;
-	}
-
-	// Last Name
-	// ***********
-	public void setLastName(String name) {
-		lName = name;
-		return;
-	}
-
-	public String getLastName() {
-		return lName;
-	}
 
 	// Auto Make
 	// ***********

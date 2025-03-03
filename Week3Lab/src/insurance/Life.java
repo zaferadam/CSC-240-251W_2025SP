@@ -10,13 +10,10 @@ import java.text.DecimalFormat;
  * term life coverage in dollars Sales commission is based on the following
  * formula: commission = term life * 20%
  */
-public class Life {
+public class Life extends Policy{
 
-	private String fName = "";
-	private String lName = "";
 	private int age = 0;
 	private double term = 0;
-	private double commission = 0;
 
 	// ****************************************************************
 	// Constructor
@@ -24,8 +21,7 @@ public class Life {
 
 	// constructor with all variables for instanced state
 	public Life(String fName, String lName, int age, double term) {
-		this.fName = fName;
-		this.lName = lName;
+		super(fName, lName);
 		this.age = age;
 		this.term = term;
 	}
@@ -33,6 +29,7 @@ public class Life {
 	// constructor with no input uses user input values in class definition until
 	// client sets them otherwise
 	public Life() {
+		super();
 	}
 
 	// ****************************************************************
@@ -55,26 +52,6 @@ public class Life {
 	// ****************************************************************
 	// Getters and setters
 	// ****************************************************************
-
-	// first name
-	public void setFirstName(String fName) {
-		this.fName = fName;
-		return;
-	}
-
-	public String getFirstName() {
-		return fName;
-	}
-
-	// last name
-	public void setLastName(String lName) {
-		this.lName = lName;
-		return;
-	}
-
-	public String getLastName() {
-		return lName;
-	}
 
 	// age
 	public void setAge(int age) {
