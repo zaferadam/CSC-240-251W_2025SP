@@ -20,22 +20,16 @@ import insurance.Policy;
 
 public class CommissionCalculator {
 
-	private Auto auto;
-	private Home home;
-	private Life life;
 	private int selection = 0;
 	private boolean running = true;
 	private static int count = 0;
-	public ArrayList<Policy> policies;
+	private ArrayList<Policy> policies;
 
 	/************************
 	 * Constructors
 	 ************************/
 	public CommissionCalculator() {
 		policies = new ArrayList<>();
-		auto = new Auto();
-		home = new Home();
-		life = new Life();
 	}
 
 	public void Run() {
@@ -57,7 +51,7 @@ public class CommissionCalculator {
 			
 			switch (selection) {
 			case 1:
-				auto = new Auto();
+				Auto auto = new Auto();
 				System.out.print("Enter first name of insured: ");
 				auto.setFirstName(scan.nextLine());
 				System.out.print("Enter last name of insured: ");
@@ -73,7 +67,7 @@ public class CommissionCalculator {
 				policies.add(auto);
 				break;
 			case 2:
-				home = new Home();
+				Home home = new Home();
 				System.out.print("Enter first name of insured: ");
 				home.setFirstName(scan.nextLine());
 				System.out.print("Enter last name of insured: ");
@@ -89,7 +83,7 @@ public class CommissionCalculator {
 				policies.add(home);
 				break;
 			case 3:
-				life = new Life();
+				Life life = new Life();
 				System.out.print("Enter first name of insured: ");
 				life.setFirstName(scan.nextLine());
 				System.out.print("Enter last name of insured: ");
