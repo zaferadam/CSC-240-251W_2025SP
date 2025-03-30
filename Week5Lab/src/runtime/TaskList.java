@@ -27,7 +27,7 @@ public class TaskList {
 		while (running) {
 			// Display menu options
 			System.out.println("-----------------------------");
-			System.out.println("Welcome to Task Priority List");
+			System.out.println("Welcome to Priority Task List");
 			System.out.println("-----------------------------");
 			System.out.println("Enter any of the following:");
 			System.out.println("     1) Add a new task to the list");
@@ -68,6 +68,8 @@ public class TaskList {
 					System.out.println("No tasks available.");
 				} else {
 					tasks.sort(Comparator.comparing(Task::getPriority)); // Sort tasks by priority (ascending order)
+					System.out.println("Priority Task List");
+					System.out.println("------------------");
 					for (Task current : tasks) {
 						System.out.println(current); // Print each task
 					}
