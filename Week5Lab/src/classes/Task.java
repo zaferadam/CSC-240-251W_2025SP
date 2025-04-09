@@ -32,7 +32,7 @@ public class Task implements Priority {
 	// Returns a formatted string representation of the task
 	@Override
 	public String toString() {
-		return "Task: " + task + "\tPriority: " + priority;
+		return "Task: " + task + "\t\tPriority: " + priority;
 	}
 
 	// Sets the priority of the task
