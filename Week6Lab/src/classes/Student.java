@@ -1,82 +1,72 @@
 package classes;
 
-// The Student class implements Comparable<Student> to allow comparison between Student objects
+// Implements Comparable for sorting by score
 public class Student implements Comparable<Student> {
 
-    // Private instance variables to store the student's score, first name, and last name
-    private int score;
-    private String firstName;
-    private String lastName;
+	private int score;
+	private String firstName;
+	private String lastName;
 
-    // Constructor that initializes all fields
-    public Student(String firstName, String lastName, int score) {
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.score = score;
-    }
+	// Full constructor
+	public Student(String firstName, String lastName, int score) {
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.score = score;
+	}
 
-    // Overloaded constructor that sets firstName to an empty string if not provided
-    public Student(String lastName, int score) {
-        this("", lastName, score);
-    }
+	// Overloaded constructors for flexibility
+	public Student(String lastName, int score) {
+		this("", lastName, score);
+	}
 
-    // Overloaded constructor that sets firstName to an empty string and score to 0 if not provided
-    public Student(String lastName) {
-        this("", lastName, 0);
-    }
+	public Student(String lastName) {
+		this("", lastName, 0);
+	}
 
-    // Overloaded constructor that sets lastName to "Unknown" and firstName to an empty string
-    public Student(int score) {
-        this("", "Unknown", score);
-    }
+	public Student(int score) {
+		this("", "Unknown", score);
+	}
 
-    // Method required by the Comparable interface; currently returns 0 (no actual comparison logic implemented)
-    @Override
-    public int compareTo(Student o) {
-        int result;
-        if (this.score == o.score) {
-        	result=0;
-        } else if (this.score < o.score) {
-        	result = -1;
-        } else {
-        	result = 1;
-        }
-        return result;
-    }
-    
-    @Override
-    public String toString() {
-        return String.format("%-15s %-15s %5d", firstName, lastName, score);
-    }
+	// Implement comparison based on score
+	@Override
+	public int compareTo(Student o) {
+		if (this.score == o.score) {
+			return 0;
+		} else if (this.score < o.score) {
+			return -1;
+		} else {
+			return 1;
+		}
+	}
 
-    // Getter method for score
-    public int getScore() {
-        return score;
-    }
+	// String output format
+	@Override
+	public String toString() {
+		return String.format("%-15s %-15s %5d", firstName, lastName, score);
+	}
 
-    // Setter method for score
-    public void setScore(int score) {
-        this.score = score;
-    }
+	// Getters and setters
+	public int getScore() {
+		return score;
+	}
 
-    // Getter method for first name
-    public String getFirstName() {
-        return firstName;
-    }
+	public void setScore(int score) {
+		this.score = score;
+	}
 
-    // Setter method for first name
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+	public String getFirstName() {
+		return firstName;
+	}
 
-    // Getter method for last name
-    public String getLastName() {
-        return lastName;
-    }
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-    // Setter method for last name
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+	public String getLastName() {
+		return lastName;
+	}
 
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 }

@@ -6,23 +6,22 @@ import classes.Student;
 
 public class Driver {
 
-	private boolean running;
-	private int entries;
-	private int selection;
-	private Gradebook gradebook;
-	private static final Scanner scan = new Scanner(System.in);
+	private boolean running;             // Controls the application loop
+	private int entries;                 // Number of student entries to collect
+	private int selection;              // User menu selection
+	private Gradebook gradebook;        // Gradebook instance to manage students
+	private static final Scanner scan = new Scanner(System.in); // Static Scanner for input
 
 	public Driver() {
 		running = true;
-		entries = 5;
+		entries = 5;     // Required number of student entries
 		selection = 0;
 		gradebook = new Gradebook();
 	}
 
 	public void run() {
-
 		while (running) {
-			// Display menu options
+			// Display menu
 			System.out.println("-----------------------------");
 			System.out.println("Welcome to Parkland Gradebook Manager");
 			System.out.println("-----------------------------");
@@ -32,17 +31,17 @@ public class Driver {
 			System.out.println("     3) Quit");
 
 			try {
-				selection = scan.nextInt(); // Read user selection
-				scan.nextLine(); // Consume newline to avoid input issues
+				selection = scan.nextInt(); // Get user menu choice
+				scan.nextLine(); // Consume newline
 			} catch (Exception e) {
 				System.out.println("Invalid input! Please enter a number.");
-				scan.nextLine(); // Clear invalid input
-				continue; // Restart loop
+				scan.nextLine(); // Clear buffer
+				continue;
 			}
 
-			// Handle user's menu selection
+			// Handle menu options
 			switch (selection) {
-			case 1: // Add a new Gradebook
+			case 1:
 				gradebook.clearGradebook();
 				System.out.println("Add " + entries + " students to the gradebook:");
 				String[] temp;
@@ -51,48 +50,49 @@ public class Driver {
 						System.out.print("<First Name> <Last Name> <Score>: ");
 						temp = scan.nextLine().trim().split("\\s+");
 
+						// Validate input
 						if (temp.length < 3) {
-							throw new IllegalArgumentException(
-									"Not enough input values. Expected format: <FirstName> <LastName> <Score>");
+							throw new IllegalArgumentException("Expected format: <FirstName> <LastName> <Score>");
 						}
 
 						String firstName = temp[0];
 						String lastName = temp[1];
 						int score = Integer.parseInt(temp[2]);
+
 						if (score < 0 || score > 100) {
 							throw new IllegalArgumentException("Score must be between 0 and 100");
 						}
 
+						// Add student to gradebook
 						gradebook.addStudent(new Student(firstName, lastName, score));
 					} catch (NumberFormatException e) {
-						System.out.println("Invalid input: Score must be an integer. Please try again.");
-						i--; // Decrement i to retry the same iteration
+						System.out.println("Score must be an integer.");
+						i--; // Retry entry
 					} catch (IllegalArgumentException e) {
 						System.out.println("Invalid input: " + e.getMessage());
-						i--; // Decrement i to retry
+						i--; // Retry entry
 					} catch (Exception e) {
 						System.out.println("Unexpected error: " + e.getMessage());
-						i--; // Decrement i to retry
+						i--; // Retry entry
 					}
 				}
 				break;
 
-			case 2: // Print the task Gradebook
-				gradebook.sortStudents();
-				System.out.println(gradebook);
+			case 2:
+				gradebook.sortStudents();          // Sort the students by score
+				System.out.println(gradebook);     // Print the list
 				break;
 
-			case 3: // Quit the application
-				running = false;
+			case 3:
+				running = false;                   // Exit the program
 				System.out.println("Thank you, please come again!");
 				break;
 
 			default:
-				System.out.println("Invalid Selection"); // Handle invalid menu choices
+				System.out.println("Invalid Selection"); // Invalid menu option
 				break;
 			}
 		}
-
 	}
 
 	public static void main(String[] args) {

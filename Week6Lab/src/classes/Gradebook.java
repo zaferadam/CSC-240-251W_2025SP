@@ -2,12 +2,13 @@ package classes;
 
 public class Gradebook {
 
-	Student[] students;
+	Student[] students; // Array of student records
 
 	public Gradebook() {
-		students = new Student[0];
+		students = new Student[0]; // Initialize empty gradebook
 	}
 
+	// Add a new student by resizing the array
 	public void addStudent(Student student) {
 		Student[] temp = students;
 		students = new Student[temp.length + 1];
@@ -15,9 +16,9 @@ public class Gradebook {
 			students[i] = temp[i];
 		}
 		students[students.length - 1] = student;
-		return;
 	}
 
+	// Remove a student by replacing them with the last entry
 	public void removeStudent(int index) {
 		if (index >= 0 && index < students.length) {
 			students[index] = students[students.length - 1];
@@ -27,12 +28,14 @@ public class Gradebook {
 				students[i] = tempArr[i];
 			}
 		}
-		return;
 	}
 
+	// Clear the gradebook
 	public void clearGradebook() {
 		students = new Student[0];
 	}
+
+	// Replace a student at a specific index
 	public void setStudentAt(Student student, int index) {
 		try {
 			students[index] = student;
@@ -41,14 +44,17 @@ public class Gradebook {
 		}
 	}
 
+	// Retrieve a student at a specific index
 	public Student getStudentAt(int index) {
 		return students[index];
 	}
 
+	// Sort the students by score
 	public void sortStudents() {
 		Sorting.selectionSort(students);
 	}
 
+	// String representation of the gradebook
 	@Override
 	public String toString() {
 		String output = String.format("%-15s %-15s %5s\n", "<First Name>", "<Last Name>", "<Score>");
@@ -64,5 +70,4 @@ public class Gradebook {
 
 		return output;
 	}
-
 }
