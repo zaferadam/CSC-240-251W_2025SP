@@ -1,17 +1,25 @@
 package runtime;
 
 import java.util.Scanner;
+import classes.Denomination;
 
 public class Driver {
 
-	private String selection; // User menu selection
+	private String input; // User menu selection
 	private static final Scanner scan = new Scanner(System.in); // Static Scanner for input
-	private int tens, fives, ones, quarters, dimes, nickels, pennies;
+	private Denomination tens, fives, ones, quarters, dimes, nickels, pennies;
 	private double money;
 
 	public Driver() {
-		selection = "";
+		input = "";
 		clearValues();
+		tens = new Denomination(10);
+		fives = new Denomination(5);
+		ones = new Denomination(1);
+		quarters = new Denomination(0.25);
+		dimes = new Denomination(0.1);
+		nickels = new Denomination(0.05);
+		pennies = new Denomination(0.01);
 	}
 
 	public void run() {
@@ -21,57 +29,57 @@ public class Driver {
 		System.out.println("-----------------------------");
 		System.out.print("Enter an amount to calculate or type 'quit' to exit:\n$");
 
-		selection = scan.nextLine();
-		while (!selection.equalsIgnoreCase("quit")) {
+		input = scan.nextLine();
+		while (!input.equalsIgnoreCase("quit")) {
 			try {
 				clearValues();
-				money = Double.parseDouble(selection); // store input money value
-				pennies = (int) Math.round(money * 100); // convert to whole cents using rounded values: 999.999 would
+				money = Double.parseDouble(input); // store input money value
+				int cents= (int) Math.round(money * 100); // convert to whole cents using rounded values: 999.999 would
 															// be converted to 1000
-				tens = pennies / 1000; // calculate tens
-				pennies -= 1000 * tens; // remove tens
-				fives = pennies / 500; // calculate fives
-				pennies -= 500 * fives; // remove fives
-				ones = pennies / 100; // calculate ones
-				pennies -= ones * 100; // remove ones
-				quarters = pennies / 25; // calculate quarters
-				pennies -= quarters * 25; // remove quarters
-				dimes = pennies / 10; // calculate dimes
-				pennies -= dimes * 10; // remove dimes
-				nickels = pennies / 5; // calculate nickels
-				pennies -= nickels * 5; // remove nickels and the remainder in pennies is the number of pennies
+				tens.setCount(cents/1000); // calculate tens
+				cents -= tens.valueCents(); // remove tens
+				fives.setCount(cents/500); // calculate fives
+				cents -= fives.valueCents(); // remove fives
+				ones.setCount(cents/100); // calculate ones
+				cents -= ones.valueCents(); // remove ones
+				quarters.setCount(cents/25); // calculate quarters
+				cents -= quarters.valueCents(); // remove quarters
+				dimes.setCount(cents/10); // calculate dimes
+				cents -= dimes.valueCents(); // remove dimes
+				nickels.setCount(cents/5); // calculate nickels
+				cents -= nickels.valueCents(); // remove nickels and the remainder in pennies is the number of pennies
+				pennies.setCount(cents); // set the remaining pennies amount
 				System.out.printf("%-15s %-15s %-10s\n", " ", "Amount", "Dollar Value");
 				System.out.println("--------------------------------------------");
-				System.out.printf("%-15s %-15s $%-10.2f\n", "Tens:", tens, (double) tens * 10);
-				System.out.printf("%-15s %-15s $%-10.2f\n", "Fives:", fives, (double) fives * 5);
-				System.out.printf("%-15s %-15s $%-10.2f\n", "Ones:", ones, (double) ones);
-				System.out.printf("%-15s %-15s $%-10.2f\n", "Quarters:", quarters, (double) quarters * .25);
-				System.out.printf("%-15s %-15s $%-10.2f\n", "Dimes:", dimes, (double) dimes * .1);
-				System.out.printf("%-15s %-15s $%-10.2f\n", "Nickels:", nickels, (double) nickels * .05);
-				System.out.printf("%-15s %-15s $%-10.2f\n", "Pennies:", pennies, (double) pennies * .01);
+				System.out.printf("%-15s %-15s $%-10.2f\n", "Tens:", tens.getCount(), tens.valueDollars());
+				System.out.printf("%-15s %-15s $%-10.2f\n", "Fives:", fives.getCount(), fives.valueDollars());
+				System.out.printf("%-15s %-15s $%-10.2f\n", "Ones:", ones.getCount(), ones.valueDollars());
+				System.out.printf("%-15s %-15s $%-10.2f\n", "Quarters:", quarters.getCount(), quarters.valueDollars());
+				System.out.printf("%-15s %-15s $%-10.2f\n", "Dimes:", dimes.getCount(), dimes.valueDollars());
+				System.out.printf("%-15s %-15s $%-10.2f\n", "Nickels:", nickels.getCount(), nickels.valueDollars());
+				System.out.printf("%-15s %-15s $%-10.2f\n", "Pennies:", pennies.getCount(), pennies.valueDollars());
 				System.out.printf("%-15s %s\n", "", "----------------------------");
 				System.out.printf("%-15s %-15s $%-10.2f\n", "", "Total:",
-						(double) tens * 10 + (double) fives * 5 + (double) ones + (double) quarters * .25
-						+ (double) dimes * .1 + (double) nickels * .05 + (double) pennies * .01);
+						tens.valueDollars() + fives.valueDollars() + ones.valueDollars() + quarters.valueDollars() + dimes.valueDollars() + nickels.valueDollars() + pennies.valueDollars());
 			} catch (Exception e) {
 				System.out.println("Invalid entry.");
 			}
 			
 			System.out.print("Enter a new value or type 'quit' to quit\n$");
-			selection = scan.nextLine(); // Get user menu choice
+			input = scan.nextLine(); // Get user menu choice
 
 		}
 		System.out.println("Thank you, goodbye!");
 	}
 
 	public void clearValues() {
-		tens = 0;
-		fives = 0;
-		ones = 0;
-		quarters = 0;
-		dimes = 0;
-		nickels = 0;
-		pennies = 0;
+		tens.setCount(0);
+		fives.setCount(0);
+		ones.setCount(0);
+		quarters.setCount(0);
+		dimes.setCount(0);
+		nickels.setCount(0);
+		pennies.setCount(0);
 		money = 0;
 	}
 
